@@ -10,9 +10,6 @@ images {
 images {
   image: "/assets/gfx/colyseus.png"
 }
-images {
-  image: "/assets/gfx/logo.png"
-}
 margin: 0
 extrude_borders: 1
 inner_padding: 0

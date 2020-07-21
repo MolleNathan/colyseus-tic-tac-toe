@@ -10,11 +10,15 @@ export default class GameScreen extends PIXI.Container {
 
   constructor () {
     super()
+    //var textureButton = PIXI.Texture.fromImage('../javascript-pixi/public/images/cu.jpg');
 
+ 
+    //Bolean
+    this.needtoStart = false
     let text = (colyseus.readyState === WebSocket.CLOSED)
       ? "Couldn't connect."
-      : "Waiting for an opponent..."
-
+      : "En attente de joueur"
+    
     this.waitingText = new PIXI.Text(text, {
       font: "100px JennaSue",
       fill: '#000',
@@ -39,7 +43,11 @@ export default class GameScreen extends PIXI.Container {
     this.room.state.players.onAdd = () => {
       numPlayers++;
 
-      if (numPlayers === 2) {
+
+      this.waitingText.text= "En attente de joueur "+ numPlayers.toString() + "/8";
+
+
+      if (numPlayers === 8 || this.needtoStart == true) {
         this.onJoin();
       }
     }

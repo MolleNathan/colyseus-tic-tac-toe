@@ -3,7 +3,6 @@ import Application from './Application';
 import TitleScreen from './screens/TitleScreen'
 
 var loader = new PIXI.loaders.Loader();
-loader.add('logo', 'images/logo.png')
 loader.add('background', 'images/background.jpg')
 loader.add('colyseus', 'images/colyseus.png')
 

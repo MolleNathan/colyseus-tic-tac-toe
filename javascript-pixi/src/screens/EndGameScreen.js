@@ -29,15 +29,8 @@ export default class EndGameScreen extends PIXI.Container {
     // increment statistics
     LocalStorage.set( incrementAttribute, LocalStorage.get(incrementAttribute)+1 )
 
-    this.title = new PIXI.Text(titleText, {
-      font: "132px JennaSue",
-      fill: 0x000,
-      textAlign: 'center'
-    })
-    this.title.pivot.x = this.title.width / 2
-    this.addChild(this.title)
 
-    this.instructionText = new PIXI.Text("touch to play again", {
+    this.instructionText = new PIXI.Text("Clique içi pour jouer aux contrées de l'horreur mec", {
       font: "52px JennaSue",
       fill: 0x000,
       textAlign: 'center'
@@ -56,7 +49,6 @@ export default class EndGameScreen extends PIXI.Container {
     this.statusesText.pivot.y = this.statusesText.height / 2
     this.addChild(this.statusesText)
 
-    this.colyseus = new PIXI.Sprite.fromImage('images/colyseus.png')
     this.colyseus.pivot.x = this.colyseus.width / 2
     this.addChild(this.colyseus)
 
@@ -68,19 +60,16 @@ export default class EndGameScreen extends PIXI.Container {
   }
 
   transitionIn () {
-    tweener.add(this.title).from({y: this.title.y - 10, alpha: 0}, 300, Tweener.ease.quintOut)
     tweener.add(this.colyseus).from({ y: this.colyseus.y + 10, alpha: 0 }, 300, Tweener.ease.quintOut)
     tweener.add(this.statusesText).from({ alpha: 0 }, 300, Tweener.ease.quintOut)
     return tweener.add(this.instructionText).from({ alpha: 0 }, 300, Tweener.ease.quintOut)
   }
 
   transitionOut () {
-    tweener.remove(this.title)
     tweener.remove(this.colyseus)
     tweener.remove(this.statusesText)
     tweener.remove(this.instructionText)
 
-    tweener.add(this.title).to({y: this.title.y - 10, alpha: 0}, 300, Tweener.ease.quintOut)
     tweener.add(this.colyseus).to({ y: this.colyseus.y + 10, alpha: 0 }, 300, Tweener.ease.quintOut)
     tweener.add(this.statusesText).to({ alpha: 0 }, 300, Tweener.ease.quintOut)
     return tweener.add(this.instructionText).to({ alpha: 0 }, 300, Tweener.ease.quintOut)
@@ -93,8 +82,6 @@ export default class EndGameScreen extends PIXI.Container {
   onResize () {
     this.MARGIN = (Application.WIDTH / 100) * 8 // 5%
 
-    this.title.x = Application.WIDTH / 2;
-    this.title.y = this.MARGIN
 
     this.instructionText.x = Application.WIDTH / 2
     this.instructionText.y = Application.HEIGHT / 2 - this.instructionText.height / 3.8

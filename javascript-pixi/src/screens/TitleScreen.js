@@ -8,11 +8,9 @@ export default class TitleScreen extends PIXI.Container {
   constructor () {
     super()
 
-    this.title = new PIXI.Sprite.fromImage("images/logo.png")
-    this.title.pivot.x = this.title.width / 2
-    this.addChild(this.title)
 
-    this.instructionText = new PIXI.Text("touch to start", {
+
+    this.instructionText = new PIXI.Text("Les nuls on va perdre", {
       font: "62px JennaSue",
       fill: 0x000,
       textAlign: 'center'
@@ -33,17 +31,14 @@ export default class TitleScreen extends PIXI.Container {
   }
 
   transitionIn () {
-    tweener.add(this.title).from({y: this.title.y - 10, alpha: 0}, 300, Tweener.ease.quadOut)
     tweener.add(this.colyseus).from({ y: this.colyseus.y + 10, alpha: 0 }, 300, Tweener.ease.quadOut)
     return tweener.add(this.instructionText).from({ alpha: 0 }, 300, Tweener.ease.quadOut)
   }
 
   transitionOut () {
-    tweener.remove(this.title)
     tweener.remove(this.colyseus)
     tweener.remove(this.instructionText)
 
-    tweener.add(this.title).to({y: this.title.y - 10, alpha: 0}, 300, Tweener.ease.quintOut)
     tweener.add(this.colyseus).to({ y: this.colyseus.y + 10, alpha: 0 }, 300, Tweener.ease.quintOut)
     return tweener.add(this.instructionText).to({ alpha: 0 }, 300, Tweener.ease.quintOut)
   }
@@ -53,8 +48,6 @@ export default class TitleScreen extends PIXI.Container {
   }
 
   onResize () {
-    this.title.x = Application.WIDTH / 2;
-    this.title.y = Application.MARGIN
 
     this.instructionText.x = Application.WIDTH / 2
     this.instructionText.y = Application.HEIGHT / 2 - this.instructionText.height / 3.8
