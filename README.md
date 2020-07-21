@@ -1,5 +1,7 @@
-# Tic-Tac-Toe Multiplayer 
+Forked from endel/colyseus-tic-tac-toe
 
+This repo will be for develop a boardgame https://www.trictrac.net/jeu-de-societe/les-contrees-de-l-horreur-0 
+First on local, then I will deploy it on ec2 aws instance
 Turn-based demonstration project using Colyseus 
 
 - [JavaScript/PixiJS](#javascript--pixijs)
